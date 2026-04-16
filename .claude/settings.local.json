@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet --version)",
+      "Bash(dotnet ef:*)",
+      "Read(//usr/local/share/dotnet/**)",
+      "Read(//Users/mariavihlaeva/Documents/MyProjects/wedding/$HOME/.dotnet/**)",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(export PATH=\"$PATH:/usr/local/share/dotnet\")",
+      "Bash(dotnet new:*)",
+      "Bash(dotnet add:*)",
+      "Bash(dotnet build:*)",
+      "Bash(export PATH=\"$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools\")",
+      "Bash(dotnet tool:*)"
+    ]
+  }
+}
