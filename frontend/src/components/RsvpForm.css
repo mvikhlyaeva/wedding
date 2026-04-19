@@ -1,0 +1,158 @@
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-top: 8px;
+}
+
+/* ─── Person block ─── */
+
+.rsvp-person {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rsvp-person__name {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text);
+}
+
+/* ─── Attend buttons ─── */
+
+.rsvp-attend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.rsvp-attend__btn {
+  padding: 13px 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, color 0.25s;
+}
+
+.rsvp-attend__btn:hover {
+  border-color: var(--sage);
+  color: var(--text);
+}
+
+.rsvp-attend__btn--active {
+  border-color: var(--sage);
+  background: var(--sage);
+  color: var(--text);
+}
+
+/* ─── Label + textarea ─── */
+
+.rsvp-label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.rsvp-textarea {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0;
+  resize: none;
+  outline: none;
+  line-height: 1.7;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.rsvp-textarea::placeholder {
+  color: var(--line);
+}
+
+.rsvp-textarea:focus {
+  border-color: var(--sage);
+}
+
+/* ─── Error ─── */
+
+.rsvp-error {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--pink);
+}
+
+/* ─── Buttons ─── */
+
+.rsvp-btn {
+  align-self: flex-start;
+  padding: 14px 40px;
+  border: 1px solid var(--sage);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.rsvp-btn:hover:not(:disabled) {
+  background: var(--sage);
+  color: var(--text);
+}
+
+.rsvp-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.rsvp-btn--ghost {
+  border-color: var(--line);
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+.rsvp-btn--ghost:hover {
+  background: transparent;
+  border-color: var(--muted);
+  color: var(--text);
+}
+
+/* ─── Confirmation ─── */
+
+.rsvp-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  animation: fadeIn 0.5s ease both;
+}
+
+.rsvp-confirmation__text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text);
+}

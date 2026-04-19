@@ -1,0 +1,28 @@
+.botanical {
+  width: 200px;
+  margin-bottom: 40px;
+  overflow: visible;
+}
+
+.botanical path {
+  stroke: var(--champagne);
+  stroke-width: 0.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 0.7s ease forwards;
+}
+
+/* Diamond first, then left/right stems, then leaves staggered outward */
+.botanical path:nth-child(1)  { animation-delay: 0.9s;  }
+.botanical path:nth-child(2)  { animation-delay: 1.05s; }
+.botanical path:nth-child(7)  { animation-delay: 1.05s; }
+.botanical path:nth-child(3)  { animation-delay: 1.25s; }
+.botanical path:nth-child(4)  { animation-delay: 1.25s; }
+.botanical path:nth-child(8)  { animation-delay: 1.25s; }
+.botanical path:nth-child(9)  { animation-delay: 1.25s; }
+.botanical path:nth-child(5)  { animation-delay: 1.45s; }
+.botanical path:nth-child(10) { animation-delay: 1.45s; }
+.botanical path:nth-child(6)  { animation-delay: 1.6s;  }
+.botanical path:nth-child(11) { animation-delay: 1.6s;  }
