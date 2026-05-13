@@ -53,7 +53,7 @@ export default function RSVPForm() {
   }
 
   const inputClass =
-    'w-full bg-transparent border-b border-[#2c2c2c]/20 py-3 font-sans text-[15px] text-[#2c2c2c] placeholder:text-[#2c2c2c]/30 outline-none focus:border-[#b8975a] transition-colors duration-300'
+    'w-full bg-transparent border-b border-[#243329]/20 py-3 font-sans text-[15px] text-[#243329] placeholder:text-[#243329]/30 outline-none focus:border-[#a08368] transition-colors duration-300'
 
   return (
     <section className="bg-[#f5f0e8] py-24 md:py-36 px-6 md:px-12 lg:px-20">
@@ -66,10 +66,7 @@ export default function RSVPForm() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="font-sans text-[11px] tracking-[0.35em] uppercase text-[#b8975a] block mb-4">
-            Подтверждение
-          </span>
-          <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-light text-[#2c2c2c]">
+          <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-light text-[#243329]">
             {guest ? <>Будете ли <span className="italic">с нами</span>?</> : 'Будете ли вы с нами?'}
           </h2>
         </motion.div>
@@ -84,11 +81,11 @@ export default function RSVPForm() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="text-center py-16"
             >
-              <div className="font-serif text-[4rem] text-[#b8975a] mb-6">✦</div>
-              <p className="font-serif text-[clamp(1.5rem,3vw,2.2rem)] font-light italic text-[#2c2c2c] mb-4">
+              <div className="font-serif text-[4rem] text-[#a08368] mb-6">✦</div>
+              <p className="font-serif text-[clamp(1.5rem,3vw,2.2rem)] font-light italic text-[#243329] mb-4">
                 Спасибо!
               </p>
-              <p className="font-sans text-[14px] text-[#5a5a5a] tracking-wide">
+              <p className="font-sans text-[14px] text-[#5a635a] tracking-wide">
                 Ваш ответ получен. Мы будем рады видеть вас 27 июня.
               </p>
             </motion.div>
@@ -105,16 +102,16 @@ export default function RSVPForm() {
               {/* Name — статика для опознанных гостей, иначе input */}
               {guest ? (
                 <div>
-                  <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a5a5a] block mb-3">
+                  <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a635a] block mb-3">
                     Имя
                   </label>
-                  <p className="font-serif italic text-[1.3rem] md:text-[1.5rem] text-[#b8975a] font-light leading-none">
+                  <p className="font-serif italic text-[1.3rem] md:text-[1.5rem] text-[#a08368] font-light leading-none">
                     {guest.name}
                   </p>
                 </div>
               ) : (
                 <div>
-                  <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a5a5a] block mb-3">
+                  <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a635a] block mb-3">
                     Ваше имя
                   </label>
                   <input
@@ -131,13 +128,13 @@ export default function RSVPForm() {
 
               {/* Attending */}
               <div>
-                <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a5a5a] block mb-4">
+                <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a635a] block mb-4">
                   Присутствие
                 </label>
                 <div className="flex gap-6">
                   {[{ value: 'yes', label: 'Да, буду' }, { value: 'no', label: 'К сожалению, нет' }].map((opt) => (
                     <label key={opt.value} className="flex items-center gap-3 cursor-pointer group">
-                      <div className="relative w-4 h-4 border border-[#b8975a] flex-shrink-0">
+                      <div className="relative w-4 h-4 border border-[#a08368] flex-shrink-0">
                         <input
                           type="radio"
                           name="attending"
@@ -148,10 +145,10 @@ export default function RSVPForm() {
                           className="sr-only"
                         />
                         {form.attending === opt.value && (
-                          <div className="absolute inset-[3px] bg-[#b8975a]" />
+                          <div className="absolute inset-[3px] bg-[#a08368]" />
                         )}
                       </div>
-                      <span className="font-sans text-[14px] text-[#2c2c2c]">{opt.label}</span>
+                      <span className="font-sans text-[14px] text-[#243329]">{opt.label}</span>
                     </label>
                   ))}
                 </div>
@@ -165,7 +162,7 @@ export default function RSVPForm() {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a5a5a] block mb-3">
+                  <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a635a] block mb-3">
                     Количество гостей
                   </label>
                   <input
@@ -182,7 +179,7 @@ export default function RSVPForm() {
 
               {/* Comment */}
               <div>
-                <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a5a5a] block mb-3">
+                <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a635a] block mb-3">
                   Комментарий
                 </label>
                 <textarea
@@ -198,7 +195,7 @@ export default function RSVPForm() {
               <button
                 type="submit"
                 disabled={loading}
-                className="border border-[#2c2c2c] text-[#2c2c2c] font-sans text-[12px] tracking-[0.2em] uppercase px-10 py-4 hover:bg-[#2c2c2c] hover:text-[#f5f0e8] transition-all duration-300 disabled:opacity-40"
+                className="border border-[#243329] text-[#243329] font-sans text-[12px] tracking-[0.2em] uppercase px-10 py-4 hover:bg-[#243329] hover:text-[#f5f0e8] transition-all duration-300 disabled:opacity-40"
               >
                 {loading ? 'Отправляем...' : 'Подтвердить'}
               </button>

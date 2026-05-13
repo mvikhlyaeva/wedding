@@ -30,8 +30,8 @@ export default function PhotoStory() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="block w-12 h-px bg-white/40 mb-6 md:mb-8" />
-          <p className="font-serif text-[2.2rem] md:text-[3.5rem] lg:text-[4.5rem] leading-[1.1] text-white font-light italic">
-            Навстречу<br />друг другу
+          <p className="font-serif text-[2.2rem] md:text-[3.5rem] lg:text-[4.5rem] leading-[1.1] text-white font-light">
+            Навстречу<br /><span className="italic">друг другу</span>
           </p>
           <span className="font-sans text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/60 mt-6 md:mt-8 block">
             Григорий &amp; Мария

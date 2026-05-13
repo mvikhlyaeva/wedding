@@ -45,19 +45,19 @@ export default function DressCodeModal({ open, onClose }) {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="relative flex items-start justify-between px-6 md:px-10 pt-7 md:pt-9 pb-5 border-b border-[#b8975a]/20 flex-shrink-0 bg-[#f7f5f3] z-10">
+            <div className="relative flex items-start justify-between px-6 md:px-10 pt-7 md:pt-9 pb-5 border-b border-[#a08368]/20 flex-shrink-0 bg-[#f7f5f3] z-10">
               <div>
-                <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-[#b8975a] block mb-2">
+                <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-[#a08368] block mb-2">
                   Lookbook
                 </span>
-                <h3 className="font-serif text-[1.6rem] md:text-[2rem] font-light text-[#2c2c2c] leading-tight">
+                <h3 className="font-serif text-[1.6rem] md:text-[2rem] font-light text-[#243329] leading-tight">
                   Идеи <span className="italic">образов</span>
                 </h3>
               </div>
 
               <button
                 onClick={onClose}
-                className="text-[#2c2c2c] hover:text-[#b8975a] transition-colors duration-300 p-1 -mt-1"
+                className="text-[#243329] hover:text-[#a08368] transition-colors duration-300 p-1 -mt-1"
                 aria-label="Закрыть"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
@@ -69,7 +69,7 @@ export default function DressCodeModal({ open, onClose }) {
 
             {/* Intro */}
             <div className="px-6 md:px-10 pt-6 md:pt-8 pb-2 flex-shrink-0">
-              <p className="font-serif italic text-[1rem] md:text-[1.1rem] text-[#5a5a5a] leading-relaxed">
+              <p className="font-serif italic text-[1rem] md:text-[1.1rem] text-[#5a635a] leading-relaxed">
                 Несколько композиций, в которых играет наша палитра — для вдохновения. Не обязательно повторять, главное — общее настроение.
               </p>
             </div>
@@ -86,11 +86,11 @@ export default function DressCodeModal({ open, onClose }) {
                 >
                   {/* Number marker */}
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="font-serif italic text-[#b8975a] text-[1.05rem]">
+                    <span className="font-serif italic text-[#a08368] text-[1.05rem]">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="block w-10 h-px bg-[#b8975a]/40" />
-                    <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#b8975a]">
+                    <span className="block w-10 h-px bg-[#a08368]/40" />
+                    <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#a08368]">
                       палитра
                     </span>
                   </div>
@@ -111,7 +111,7 @@ export default function DressCodeModal({ open, onClose }) {
                     />
                     <div
                       data-ph
-                      className="hidden absolute inset-0 items-center justify-center aspect-[3/4] text-[#b8975a]/50 font-sans text-[11px] tracking-[0.25em] uppercase text-center px-6"
+                      className="hidden absolute inset-0 items-center justify-center aspect-[3/4] text-[#a08368]/50 font-sans text-[11px] tracking-[0.25em] uppercase text-center px-6"
                     >
                       lookbook-{i + 1}.jpg<br />
                       <span className="text-[10px] mt-1 opacity-70">положите в public/dress-code/</span>
@@ -122,8 +122,8 @@ export default function DressCodeModal({ open, onClose }) {
 
               {/* Footer */}
               <div className="text-center pt-4">
-                <span className="block w-10 h-px bg-[#b8975a]/40 mx-auto mb-5" />
-                <p className="font-serif italic text-[0.95rem] md:text-[1.05rem] text-[#5a5a5a] leading-relaxed">
+                <span className="block w-10 h-px bg-[#a08368]/40 mx-auto mb-5" />
+                <p className="font-serif italic text-[0.95rem] md:text-[1.05rem] text-[#5a635a] leading-relaxed">
                   Будем благодарны за поддержку настроения вечера
                 </p>
               </div>

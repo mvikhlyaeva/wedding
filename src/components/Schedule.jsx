@@ -48,17 +48,14 @@ export default function Schedule() {
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="font-sans text-[10px] md:text-[11px] tracking-[0.4em] uppercase text-[#b8975a] block mb-3">
-            27 июня 2026
-          </span>
-          <h2 className="font-serif text-[2.4rem] md:text-[3rem] font-light leading-tight text-[#2c2c2c]">
+          <h2 className="font-serif text-[2.4rem] md:text-[3rem] font-light leading-tight text-[#243329] text-center">
             Программа <span className="italic">дня</span>
           </h2>
         </motion.div>
 
         {/* Top flourish */}
         <motion.div
-          className="text-[#b8975a] mb-7 md:mb-9"
+          className="text-[#a08368] mb-7 md:mb-9"
           initial={{ opacity: 0, scale: 0.7 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-50px' }}
@@ -74,7 +71,7 @@ export default function Schedule() {
         >
           {/* Vertical line — explicit placement в col 2, span всех 6 строк */}
           <motion.div
-            className="w-px bg-gradient-to-b from-transparent via-[#b8975a]/55 to-transparent justify-self-center self-stretch origin-top pointer-events-none"
+            className="w-px bg-gradient-to-b from-transparent via-[#a08368]/55 to-transparent justify-self-center self-stretch origin-top pointer-events-none"
             style={{ gridColumn: 2, gridRow: '1 / span 6' }}
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
@@ -89,7 +86,7 @@ export default function Schedule() {
 
         {/* Bottom flourish */}
         <motion.div
-          className="text-[#b8975a] mt-7 md:mt-9"
+          className="text-[#a08368] mt-7 md:mt-9"
           initial={{ opacity: 0, scale: 0.7 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-50px' }}
@@ -110,7 +107,7 @@ function Row({ event, index }) {
     <>
       {/* Time */}
       <motion.span
-        className="font-serif italic text-[17px] md:text-[20px] tracking-[0.04em] text-[#b8975a] text-right"
+        className="font-serif italic text-[17px] md:text-[20px] tracking-[0.04em] text-[#a08368] text-right"
         style={{ gridColumn: 1, gridRow: rowNum }}
         initial={{ opacity: 0, x: -12 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -122,7 +119,7 @@ function Row({ event, index }) {
 
       {/* Star ornament — на «островке» чтобы перебить линию позади */}
       <motion.span
-        className="relative flex items-center justify-center text-[#b8975a] bg-[#f5f0e8] px-2 py-1 z-10"
+        className="relative flex items-center justify-center text-[#a08368] bg-[#f5f0e8] px-2 py-1 z-10"
         style={{ gridColumn: 2, gridRow: rowNum }}
         initial={{ opacity: 0, scale: 0.3, rotate: -120 }}
         whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -138,7 +135,7 @@ function Row({ event, index }) {
 
       {/* Label */}
       <motion.span
-        className="font-serif text-[1.15rem] md:text-[1.35rem] text-[#2c2c2c] font-light leading-snug"
+        className="font-serif text-[1.15rem] md:text-[1.35rem] text-[#243329] font-light leading-snug"
         style={{ gridColumn: 3, gridRow: rowNum }}
         initial={{ opacity: 0, x: 12 }}
         whileInView={{ opacity: 1, x: 0 }}

@@ -13,50 +13,36 @@ const fadeUp = {
 export default function Invitation() {
   const guest = getGuest()
   return (
-    <section className="relative bg-[#f5f0e8] py-20 md:py-36 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+    <section className="relative bg-[#f5f0e8] pt-24 md:pt-40 pb-12 md:pb-20 overflow-hidden">
+      <div className="max-w-3xl mx-auto px-6 md:px-12">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
+          {guest && (
+            <p
+              className="font-serif italic font-light text-[#a08368] leading-tight mb-8 md:mb-12"
+              style={{ fontSize: 'clamp(1.9rem, 5.5vw, 3rem)' }}
+            >
+              {guest.greeting},
+            </p>
+          )}
 
-          {/* Photo */}
-          <motion.div
-            className="relative w-full max-w-md mx-auto md:max-w-none order-1"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          <blockquote
+            className="font-serif font-light text-[#243329] leading-[1.15]"
+            style={{
+              fontSize: 'clamp(1.7rem, 4.8vw, 3.2rem)',
+              letterSpacing: '-0.01em',
+            }}
           >
-            <div className="relative w-full aspect-[3/4] overflow-hidden">
-              <img
-                src="/IMG_8074.jpg"
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
+            В этот день мы хотим разделить нашу{' '}
+            <em className="italic text-[#a08368]">радость</em> с теми, кто
+            важен для нас
+          </blockquote>
 
-          {/* Text */}
-          <motion.div
-            className="relative order-2"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-          >
-            <span className="font-sans text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-[#b8975a] mb-6 md:mb-8 block">
-              Приглашение
-            </span>
-
-            {guest && (
-              <p className="font-serif italic text-[1.15rem] md:text-[1.4rem] text-[#b8975a] font-light mb-5 md:mb-7 leading-snug">
-                {guest.greeting},
-              </p>
-            )}
-
-            <blockquote className="font-serif text-[1.7rem] md:text-[2.5rem] lg:text-[3rem] leading-[1.2] text-[#2c2c2c] font-light italic">
-              «В этот день мы хотим разделить нашу радость с теми, кто важен для нас»
-            </blockquote>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

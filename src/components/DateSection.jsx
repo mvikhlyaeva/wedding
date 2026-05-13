@@ -22,7 +22,7 @@ const Star = ({ size = 9 }) => (
 
 export default function DateSection() {
   return (
-    <section className="bg-[#f5f0e8] py-20 md:py-28 px-6 overflow-hidden">
+    <section className="bg-[#f5f0e8] pt-10 md:pt-16 pb-20 md:pb-28 px-6 overflow-hidden">
       <div className="w-fit max-w-full mx-auto">
 
         {/* Header */}
@@ -33,9 +33,22 @@ export default function DateSection() {
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="font-serif text-[2.2rem] md:text-[2.8rem] font-light leading-tight text-[#2c2c2c]">
-            <span className="italic">Июнь</span> 2026
+          <h2
+            className="font-serif italic font-light leading-[0.9] text-[#243329]"
+            style={{
+              fontSize: 'clamp(3rem, 9vw, 5rem)',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Июнь
           </h2>
+          <div className="flex items-center justify-center gap-3 mt-4 md:mt-5 text-[#a08368]">
+            <span className="block w-6 md:w-8 h-px bg-current/50" />
+            <span className="font-sans text-[10px] md:text-[11px] tracking-[0.4em] uppercase">
+              2026
+            </span>
+            <span className="block w-6 md:w-8 h-px bg-current/50" />
+          </div>
         </motion.div>
 
         {/* Calendar */}
@@ -52,7 +65,7 @@ export default function DateSection() {
             {dayLabels.map((d) => (
               <span
                 key={d}
-                className="font-sans text-[9px] md:text-[10px] tracking-[0.18em] uppercase text-[#b8975a] text-center"
+                className="font-sans text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-[#a08368] text-center"
               >
                 {d}
               </span>
@@ -61,7 +74,7 @@ export default function DateSection() {
 
           {/* Thin divider */}
           <motion.div
-            className="w-full h-px bg-[#b8975a]/35 mb-4 origin-left"
+            className="w-full h-px bg-[#a08368]/35 mb-4 origin-left"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, margin: '-40px' }}
@@ -77,7 +90,7 @@ export default function DateSection() {
 
           {/* Thin divider */}
           <motion.div
-            className="w-full h-px bg-[#b8975a]/35 mt-4 origin-right"
+            className="w-full h-px bg-[#a08368]/35 mt-4 origin-right"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, margin: '-40px' }}
@@ -93,10 +106,13 @@ export default function DateSection() {
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 1, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="font-serif italic text-[1.2rem] md:text-[1.4rem] text-[#2c2c2c] font-light mb-2">
+          <p
+            className="font-serif italic text-[#243329] font-light mb-3"
+            style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
+          >
             суббота
           </p>
-          <div className="flex items-center justify-center gap-2.5 text-[#b8975a]">
+          <div className="flex items-center justify-center gap-2.5 text-[#a08368]">
             <span className="block w-5 h-px bg-current/60" />
             <span className="font-sans text-[10px] md:text-[11px] tracking-[0.3em] uppercase">
               начало в 16:00
@@ -128,7 +144,7 @@ function DayCell({ day, index }) {
       >
         {/* Маленькая звезда сверху */}
         <motion.span
-          className="absolute top-0 text-[#b8975a] -translate-y-1/2"
+          className="absolute top-0 text-[#a08368] -translate-y-1/2"
           initial={{ opacity: 0, scale: 0.3, rotate: -90 }}
           whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
           viewport={{ once: true }}
@@ -139,7 +155,7 @@ function DayCell({ day, index }) {
 
         {/* Кольцо */}
         <motion.span
-          className="absolute inset-[10%] rounded-full border border-[#b8975a]"
+          className="absolute inset-[10%] rounded-full border border-[#a08368]"
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
@@ -148,7 +164,7 @@ function DayCell({ day, index }) {
 
         {/* Число */}
         <motion.span
-          className="relative font-serif italic text-[1.5rem] md:text-[1.85rem] text-[#b8975a] font-light leading-none"
+          className="relative font-serif italic text-[2rem] md:text-[2.4rem] text-[#a08368] font-light leading-none"
           initial={{ opacity: 0, scale: 0.7 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -162,7 +178,7 @@ function DayCell({ day, index }) {
 
   return (
     <motion.span
-      className="aspect-square flex items-center justify-center font-sans text-[12px] md:text-[13px] font-light text-[#2c2c2c]/55"
+      className="aspect-square flex items-center justify-center font-serif text-[15px] md:text-[17px] font-light text-[#243329]/60 tabular-nums"
       initial={{ opacity: 0, y: 6 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

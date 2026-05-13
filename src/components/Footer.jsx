@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#2c2c2c] overflow-hidden py-24 md:py-36 px-6 md:px-12 lg:px-20">
+    <footer className="relative bg-[#243329] overflow-hidden py-24 md:py-36 px-6 md:px-12 lg:px-20">
       {/* Background large text */}
       <div
         className="absolute inset-0 flex items-center justify-center font-serif text-[clamp(8rem,22vw,20rem)] leading-none text-white/[0.03] select-none pointer-events-none"
@@ -24,7 +24,7 @@ export default function Footer() {
             С любовью,<br />Григорий и Мария
           </p>
 
-          <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#5a5a5a]">
+          <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#5a635a]">
             27 · 06 · 2026
           </span>
 

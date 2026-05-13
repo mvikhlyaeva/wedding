@@ -66,7 +66,7 @@ export default function MusicToggle() {
   return (
     <motion.button
       onClick={toggle}
-      className="fixed bottom-5 right-5 md:bottom-7 md:right-7 z-50 flex items-center gap-2.5 pl-3 pr-4 py-2.5 rounded-full bg-[#2c2c2c]/85 backdrop-blur-md border border-white/10 hover:border-[#e8d5b0]/50 text-white shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-colors duration-300 group"
+      className="fixed bottom-5 right-5 md:bottom-7 md:right-7 z-50 flex items-center gap-2.5 pl-3 pr-4 py-2.5 rounded-full bg-[#243329]/85 backdrop-blur-md border border-white/10 hover:border-[#d4c4a8]/50 text-white shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-colors duration-300 group"
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ delay: 1.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -74,7 +74,7 @@ export default function MusicToggle() {
       aria-label={playing ? 'Выключить музыку' : 'Включить музыку'}
     >
       {/* Icon */}
-      <span className="relative w-7 h-7 flex items-center justify-center rounded-full bg-[#e8d5b0]/15 group-hover:bg-[#e8d5b0]/25 transition-colors duration-300">
+      <span className="relative w-7 h-7 flex items-center justify-center rounded-full bg-[#d4c4a8]/15 group-hover:bg-[#d4c4a8]/25 transition-colors duration-300">
         <AnimatePresence mode="wait" initial={false}>
           {playing ? (
             /* Animated bars */
@@ -89,7 +89,7 @@ export default function MusicToggle() {
               {[0, 1, 2, 3].map((i) => (
                 <motion.span
                   key={i}
-                  className="w-[2.5px] rounded-full bg-[#e8d5b0]"
+                  className="w-[2.5px] rounded-full bg-[#d4c4a8]"
                   animate={{ height: ['30%', '100%', '30%'] }}
                   transition={{
                     duration: 0.9,
@@ -108,7 +108,7 @@ export default function MusicToggle() {
               height="14"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#e8d5b0"
+              stroke="#d4c4a8"
               strokeWidth="1.8"
               strokeLinecap="round"
               strokeLinejoin="round"
