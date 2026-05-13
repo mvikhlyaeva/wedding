@@ -1,13 +1,10 @@
-# .NET build output
-backend/bin/
-backend/obj/
-backend/*.db
-backend/*.db-shm
-backend/*.db-wal
-
 # Node
-frontend/node_modules/
-frontend/dist/
+node_modules/
+dist/
+*.log
+
+# Vite
+.vite/
 
 # IDE
 .idea/
@@ -16,3 +13,12 @@ frontend/dist/
 
 # OS
 .DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Claude worktrees
+.claude/worktrees/
