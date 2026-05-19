@@ -1,41 +1,69 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getGuest } from '../guests'
 
-// После создания Google Forms — заменить этот URL и entry ID'ы
-const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/formResponse'
+const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdouKEx0FjOQpStE692i9YgI8E4edHqfNJsZ-CwOlDsjgDQKQ/formResponse'
 const FIELD_IDS = {
-  name: 'entry.000000001',
-  attending: 'entry.000000002',
-  guests: 'entry.000000003',
-  comment: 'entry.000000004',
+  name: 'entry.176411499',
+  attending: 'entry.1274058350',
+  drinks: 'entry.1780015604',
+  comment: 'entry.901733153',
 }
+
+const DRINK_OPTIONS = [
+  'Шампанское',
+  'Игристое розовое',
+  'Белое вино',
+  'Красное вино',
+  'Виски',
+  'Коньяк',
+  'Водка',
+  'Джин',
+  'Не пью алкоголь',
+]
 
 export default function RSVPForm() {
   const guest = getGuest()
   const [form, setForm] = useState({
     name: guest?.name || '',
     attending: '',
-    guests: '1',
+    drinks: [],
     comment: '',
   })
+  const STORAGE_KEY = `rsvp-submitted${guest?.slug ? `-${guest.slug}` : ''}`
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  // Восстанавливаем состояние «уже отправил» из localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === '1') {
+      setSubmitted(true)
+    }
+  }, [STORAGE_KEY])
+
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const toggleDrink = (drink) => {
+    setForm((prev) => ({
+      ...prev,
+      drinks: prev.drinks.includes(drink)
+        ? prev.drinks.filter((d) => d !== drink)
+        : [...prev.drinks, drink],
+    }))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
 
-    const body = new URLSearchParams({
-      [FIELD_IDS.name]: form.name,
-      [FIELD_IDS.attending]: form.attending,
-      [FIELD_IDS.guests]: form.guests,
-      [FIELD_IDS.comment]: form.comment,
-    })
+    // Google Forms multi-checkbox: повторяем тот же entry-id для каждого выбранного значения
+    const body = new URLSearchParams()
+    body.append(FIELD_IDS.name, form.name)
+    body.append(FIELD_IDS.attending, form.attending)
+    body.append(FIELD_IDS.comment, form.comment)
+    form.drinks.forEach((d) => body.append(FIELD_IDS.drinks, d))
 
     try {
       await fetch(GOOGLE_FORM_ACTION, {
@@ -44,19 +72,24 @@ export default function RSVPForm() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body.toString(),
       })
-    } catch (_) {
+    } catch {
       // no-cors: ответ всегда opaque, ошибки сети игнорируем
     }
 
     setLoading(false)
     setSubmitted(true)
+    try {
+      localStorage.setItem(STORAGE_KEY, '1')
+    } catch {
+      // приватный режим — игнорируем
+    }
   }
 
   const inputClass =
-    'w-full bg-transparent border-b border-[#243329]/20 py-3 font-sans text-[15px] text-[#243329] placeholder:text-[#243329]/30 outline-none focus:border-[#a08368] transition-colors duration-300'
+    'w-full bg-transparent border-b border-[#243329]/20 py-3 font-sans text-[15px] text-[#243329] placeholder:text-[#243329]/30 outline-none focus:border-[#9c8e78] transition-colors duration-300'
 
   return (
-    <section className="bg-[#f5f0e8] py-24 md:py-36 px-6 md:px-12 lg:px-20">
+    <section className="bg-[#f9f4e8] py-24 md:py-36 px-6 md:px-12 lg:px-20">
       <div className="max-w-2xl mx-auto">
 
         <motion.div
@@ -67,7 +100,7 @@ export default function RSVPForm() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-light text-[#243329]">
-            {guest ? <>Будете ли <span className="italic">с нами</span>?</> : 'Будете ли вы с нами?'}
+            {guest ? 'Будете ли с нами?' : 'Будете ли вы с нами?'}
           </h2>
         </motion.div>
 
@@ -81,7 +114,11 @@ export default function RSVPForm() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="text-center py-16"
             >
-              <div className="font-serif text-[4rem] text-[#a08368] mb-6">✦</div>
+              <img
+                src="/icons/wreath.png"
+                alt=""
+                className="w-40 h-40 md:w-52 md:h-52 mx-auto mb-6 opacity-90"
+              />
               <p className="font-serif text-[clamp(1.5rem,3vw,2.2rem)] font-light italic text-[#243329] mb-4">
                 Спасибо!
               </p>
@@ -105,7 +142,7 @@ export default function RSVPForm() {
                   <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a635a] block mb-3">
                     Имя
                   </label>
-                  <p className="font-serif italic text-[1.3rem] md:text-[1.5rem] text-[#a08368] font-light leading-none">
+                  <p className="font-serif italic text-[1.3rem] md:text-[1.5rem] text-[#9c8e78] font-light leading-none">
                     {guest.name}
                   </p>
                 </div>
@@ -134,7 +171,7 @@ export default function RSVPForm() {
                 <div className="flex gap-6">
                   {[{ value: 'yes', label: 'Да, буду' }, { value: 'no', label: 'К сожалению, нет' }].map((opt) => (
                     <label key={opt.value} className="flex items-center gap-3 cursor-pointer group">
-                      <div className="relative w-4 h-4 border border-[#a08368] flex-shrink-0">
+                      <div className="relative w-4 h-4 border border-[#9c8e78] flex-shrink-0">
                         <input
                           type="radio"
                           name="attending"
@@ -145,7 +182,7 @@ export default function RSVPForm() {
                           className="sr-only"
                         />
                         {form.attending === opt.value && (
-                          <div className="absolute inset-[3px] bg-[#a08368]" />
+                          <div className="absolute inset-[3px] bg-[#9c8e78]" />
                         )}
                       </div>
                       <span className="font-sans text-[14px] text-[#243329]">{opt.label}</span>
@@ -154,26 +191,38 @@ export default function RSVPForm() {
                 </div>
               </div>
 
-              {/* Guests count */}
+              {/* Drink preferences — multi-select */}
               {form.attending === 'yes' && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: 0.4, delay: 0.05 }}
                 >
-                  <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a635a] block mb-3">
-                    Количество гостей
+                  <label className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#5a635a] block mb-4">
+                    Что будете пить?
                   </label>
-                  <input
-                    type="number"
-                    name="guests"
-                    value={form.guests}
-                    onChange={handleChange}
-                    min="1"
-                    max="10"
-                    className={inputClass}
-                  />
+                  <div className="grid grid-cols-2 gap-y-3 gap-x-4">
+                    {DRINK_OPTIONS.map((drink) => {
+                      const checked = form.drinks.includes(drink)
+                      return (
+                        <label key={drink} className="flex items-center gap-3 cursor-pointer group">
+                          <div className="relative w-4 h-4 border border-[#9c8e78] flex-shrink-0">
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={() => toggleDrink(drink)}
+                              className="sr-only"
+                            />
+                            {checked && (
+                              <div className="absolute inset-[3px] bg-[#9c8e78]" />
+                            )}
+                          </div>
+                          <span className="font-sans text-[14px] text-[#243329] leading-tight">{drink}</span>
+                        </label>
+                      )
+                    })}
+                  </div>
                 </motion.div>
               )}
 
@@ -195,7 +244,7 @@ export default function RSVPForm() {
               <button
                 type="submit"
                 disabled={loading}
-                className="border border-[#243329] text-[#243329] font-sans text-[12px] tracking-[0.2em] uppercase px-10 py-4 hover:bg-[#243329] hover:text-[#f5f0e8] transition-all duration-300 disabled:opacity-40"
+                className="border border-[#243329] text-[#243329] font-sans text-[12px] tracking-[0.2em] uppercase px-10 py-4 hover:bg-[#243329] hover:text-[#f9f4e8] transition-all duration-300 disabled:opacity-40"
               >
                 {loading ? 'Отправляем...' : 'Подтвердить'}
               </button>

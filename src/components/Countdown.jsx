@@ -41,9 +41,9 @@ export default function Countdown() {
 
   if (t.finished) {
     return (
-      <section className="bg-[#f5f0e8] py-20 md:py-28 px-6 text-center">
+      <section className="bg-[#f9f4e8] py-20 md:py-28 px-6 text-center">
         <p className="font-serif text-[1.6rem] md:text-[2.2rem] text-[#243329]">
-          Этот день <span className="italic">настал</span>.
+          Этот день настал.
         </p>
       </section>
     )
@@ -57,7 +57,7 @@ export default function Countdown() {
   ]
 
   return (
-    <section className="bg-[#f5f0e8] py-20 md:py-28 px-6 overflow-hidden">
+    <section className="bg-[#f9f4e8] py-20 md:py-28 px-6 overflow-hidden">
       <div className="w-fit max-w-full mx-auto text-center">
 
         {/* Eyebrow */}
@@ -68,11 +68,11 @@ export default function Countdown() {
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="font-sans text-[10px] md:text-[11px] tracking-[0.4em] uppercase text-[#a08368] block mb-3">
+          <span className="font-sans text-[10px] md:text-[11px] tracking-[0.4em] uppercase text-[#9c8e78] block mb-3">
             До торжества
           </span>
           <h2 className="font-serif text-[2rem] md:text-[2.6rem] font-light text-[#243329] leading-tight">
-            осталось <span className="italic">совсем</span> немного
+            осталось совсем немного
           </h2>
         </motion.div>
 
@@ -103,14 +103,14 @@ export default function Countdown() {
                   </AnimatePresence>
                 </div>
                 {/* Label */}
-                <span className="mt-3 font-sans text-[9px] md:text-[11px] tracking-[0.25em] uppercase text-[#a08368]">
+                <span className="mt-3 font-sans text-[9px] md:text-[11px] tracking-[0.25em] uppercase text-[#9c8e78]">
                   {plural(u.value, labelMap[u.key])}
                 </span>
               </div>
 
               {/* Separator dot */}
               {i < units.length - 1 && (
-                <span className="font-serif text-[#a08368]/55 text-[1.8rem] md:text-[2.6rem] leading-none mt-1 select-none">
+                <span className="font-serif text-[#9c8e78]/55 text-[1.8rem] md:text-[2.6rem] leading-none mt-1 select-none">
                   ·
                 </span>
               )}
@@ -120,7 +120,7 @@ export default function Countdown() {
 
         {/* Subtitle */}
         <motion.div
-          className="flex items-center justify-center gap-3 text-[#a08368]"
+          className="flex items-center justify-center gap-3 text-[#9c8e78]"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}

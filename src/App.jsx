@@ -18,10 +18,10 @@ export default function App() {
       <Invitation />
       <DateSection />
       <Memories />
-      <PhotoStory />
       <Schedule />
       <Location />
       <DressCode />
+      <PhotoStory />
       <RSVPForm />
       <Countdown />
       <MusicToggle />

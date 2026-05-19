@@ -12,38 +12,29 @@ export default function Location() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-light text-[#f5f0e8]">
+          <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-light text-[#f9f4e8]">
             Экопосёлок Бушово
           </h2>
-          <p className="font-sans text-[12px] md:text-[13px] tracking-[0.15em] text-[#a08368] mt-3">
+          <p className="font-sans text-[12px] md:text-[13px] tracking-[0.15em] text-[#9c8e78] mt-3">
             микрорайон Бушово, 1
           </p>
         </motion.div>
 
-        {/* Map placeholder */}
+        {/* Yandex map */}
         <motion.div
-          className="relative w-full aspect-[16/7] bg-[#2e3d34] mb-8 overflow-hidden"
+          className="relative w-full aspect-[16/9] md:aspect-[16/7] bg-[#2e3d34] mb-8 overflow-hidden"
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Placeholder content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#a08368" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            <span className="font-sans text-[12px] tracking-[0.2em] uppercase text-[#5a635a]">
-              карта появится позже
-            </span>
-          </div>
-          {/* Grid lines decoration */}
-          <div className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: 'linear-gradient(#a08368 1px, transparent 1px), linear-gradient(90deg, #a08368 1px, transparent 1px)',
-              backgroundSize: '40px 40px'
-            }}
+          <iframe
+            title="Карта — Экопосёлок Бушово"
+            src="https://yandex.ru/map-widget/v1/?mode=search&oid=44966233462&ol=biz&z=15"
+            className="absolute inset-0 w-full h-full"
+            frameBorder="0"
+            allow="fullscreen"
+            loading="lazy"
           />
         </motion.div>
 
@@ -58,7 +49,7 @@ export default function Location() {
             href="https://yandex.ru/maps/org/ekoposelok_bushovo/44966233462?si=5fza92nuhd81derg8k2vvgnvf4"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 border border-[#a08368] text-[#a08368] font-sans text-[12px] tracking-[0.2em] uppercase px-8 py-4 hover:bg-[#a08368] hover:text-[#243329] transition-all duration-300"
+            className="inline-flex items-center gap-3 border border-[#9c8e78] text-[#9c8e78] font-sans text-[12px] tracking-[0.2em] uppercase px-8 py-4 hover:bg-[#9c8e78] hover:text-[#243329] transition-all duration-300"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>

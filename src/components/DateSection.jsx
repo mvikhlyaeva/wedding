@@ -22,7 +22,7 @@ const Star = ({ size = 9 }) => (
 
 export default function DateSection() {
   return (
-    <section className="bg-[#f5f0e8] pt-10 md:pt-16 pb-20 md:pb-28 px-6 overflow-hidden">
+    <section className="bg-[#f9f4e8] pt-4 md:pt-6 pb-20 md:pb-28 px-6 overflow-hidden">
       <div className="w-fit max-w-full mx-auto">
 
         {/* Header */}
@@ -42,7 +42,7 @@ export default function DateSection() {
           >
             Июнь
           </h2>
-          <div className="flex items-center justify-center gap-3 mt-4 md:mt-5 text-[#a08368]">
+          <div className="flex items-center justify-center gap-3 mt-4 md:mt-5 text-[#9c8e78]">
             <span className="block w-6 md:w-8 h-px bg-current/50" />
             <span className="font-sans text-[10px] md:text-[11px] tracking-[0.4em] uppercase">
               2026
@@ -65,7 +65,7 @@ export default function DateSection() {
             {dayLabels.map((d) => (
               <span
                 key={d}
-                className="font-sans text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-[#a08368] text-center"
+                className="font-sans text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-[#9c8e78] text-center"
               >
                 {d}
               </span>
@@ -74,7 +74,7 @@ export default function DateSection() {
 
           {/* Thin divider */}
           <motion.div
-            className="w-full h-px bg-[#a08368]/35 mb-4 origin-left"
+            className="w-full h-px bg-[#9c8e78]/35 mb-4 origin-left"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, margin: '-40px' }}
@@ -90,7 +90,7 @@ export default function DateSection() {
 
           {/* Thin divider */}
           <motion.div
-            className="w-full h-px bg-[#a08368]/35 mt-4 origin-right"
+            className="w-full h-px bg-[#9c8e78]/35 mt-4 origin-right"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, margin: '-40px' }}
@@ -112,7 +112,7 @@ export default function DateSection() {
           >
             суббота
           </p>
-          <div className="flex items-center justify-center gap-2.5 text-[#a08368]">
+          <div className="flex items-center justify-center gap-2.5 text-[#9c8e78]">
             <span className="block w-5 h-px bg-current/60" />
             <span className="font-sans text-[10px] md:text-[11px] tracking-[0.3em] uppercase">
               начало в 16:00
@@ -142,29 +142,43 @@ function DayCell({ day, index }) {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay }}
       >
-        {/* Маленькая звезда сверху */}
+        {/* Камень сверху — огранённый изумруд */}
         <motion.span
-          className="absolute top-0 text-[#a08368] -translate-y-1/2"
-          initial={{ opacity: 0, scale: 0.3, rotate: -90 }}
-          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          className="absolute top-0 text-[#9c8e78] -translate-y-[55%] z-10"
+          initial={{ opacity: 0, scale: 0.3, y: -4 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: delay + 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Star size={9} />
+          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+            {/* верхняя огранка-табличка */}
+            <path d="M3.5 4 L7 1 L10.5 4 Z" stroke="currentColor" strokeWidth="0.9" strokeLinejoin="round" fill="currentColor" fillOpacity="0.15" />
+            {/* боковые грани */}
+            <path d="M1 5.5 L3.5 4 L10.5 4 L13 5.5 L7 14.5 Z" stroke="currentColor" strokeWidth="0.9" strokeLinejoin="round" fill="currentColor" fillOpacity="0.08" />
+            {/* внутренние линии огранки */}
+            <path d="M3.5 4 L7 14.5 M10.5 4 L7 14.5 M1 5.5 L13 5.5" stroke="currentColor" strokeWidth="0.7" strokeLinecap="round" />
+          </svg>
         </motion.span>
 
-        {/* Кольцо */}
+        {/* Кольцо — двойной контур */}
         <motion.span
-          className="absolute inset-[10%] rounded-full border border-[#a08368]"
+          className="absolute inset-[8%] rounded-full border-[1.5px] border-[#9c8e78]"
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: delay + 0.3, ease: [0.22, 1, 0.36, 1] }}
         />
+        <motion.span
+          className="absolute inset-[14%] rounded-full border border-[#9c8e78]/40"
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: delay + 0.4, ease: [0.22, 1, 0.36, 1] }}
+        />
 
         {/* Число */}
         <motion.span
-          className="relative font-serif italic text-[2rem] md:text-[2.4rem] text-[#a08368] font-light leading-none"
+          className="relative font-serif italic text-[2rem] md:text-[2.4rem] text-[#9c8e78] font-light leading-none"
           initial={{ opacity: 0, scale: 0.7 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

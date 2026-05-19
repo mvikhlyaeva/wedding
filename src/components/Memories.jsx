@@ -20,7 +20,7 @@ const photos = [
 
 export default function Memories() {
   return (
-    <section className="bg-[#f5f0e8] py-20 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section className="bg-[#f9f4e8] py-20 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-12 gap-x-4 md:gap-x-6 gap-y-10 md:gap-y-14">
           {photos.map((photo) => (
@@ -44,7 +44,7 @@ export default function Memories() {
                 />
               </div>
               {photo.caption && (
-                <div className="flex items-center justify-center gap-3 md:gap-4 mt-5 md:mt-6 text-[#a08368]">
+                <div className="flex items-center justify-center gap-3 md:gap-4 mt-5 md:mt-6 text-[#9c8e78]">
                   <span className="block w-6 md:w-8 h-px bg-current/60" />
                   <p
                     className="font-serif italic font-light leading-none whitespace-nowrap"

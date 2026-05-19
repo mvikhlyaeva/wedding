@@ -77,7 +77,7 @@ export default function Hero() {
         <motion.span
           className="block italic"
           style={{
-            color: '#d4c4a8',
+            color: '#bfb097',
             fontSize: 'clamp(2.8rem, 8vw, 5.5rem)',
           }}
           variants={monogramLetter}
@@ -107,7 +107,7 @@ export default function Hero() {
           custom={1.8}
         >
           <p className="font-serif text-white text-[1.3rem] md:text-[1.8rem] font-light leading-snug mb-5 md:mb-7">
-            Григорий <span className="italic text-[#d4c4a8]">&amp;</span> Мария
+            Григорий <span className="italic text-[#bfb097]">&amp;</span> Мария
           </p>
 
           <div className="flex items-center justify-center gap-3 mb-3">

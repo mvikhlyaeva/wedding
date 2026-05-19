@@ -13,8 +13,8 @@ const fadeUp = {
 export default function Invitation() {
   const guest = getGuest()
   return (
-    <section className="relative bg-[#f5f0e8] pt-24 md:pt-40 pb-12 md:pb-20 overflow-hidden">
-      <div className="max-w-3xl mx-auto px-6 md:px-12">
+    <section className="relative bg-[#f9f4e8] pt-24 md:pt-40 pb-4 md:pb-6 overflow-hidden">
+      <div className="max-w-2xl mx-auto px-6 md:px-10">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -23,24 +23,24 @@ export default function Invitation() {
         >
           {guest && (
             <p
-              className="font-serif italic font-light text-[#a08368] leading-tight mb-8 md:mb-12"
-              style={{ fontSize: 'clamp(1.9rem, 5.5vw, 3rem)' }}
+              className="font-serif italic text-[#928266] leading-tight mb-5 md:mb-7"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 400 }}
             >
-              {guest.greeting},
+              {guest.greeting}!
             </p>
           )}
 
-          <blockquote
-            className="font-serif font-light text-[#243329] leading-[1.15]"
+          <p
+            className="font-serif text-[#243329] leading-[1.85]"
             style={{
-              fontSize: 'clamp(1.7rem, 4.8vw, 3.2rem)',
-              letterSpacing: '-0.01em',
+              fontSize: 'clamp(1.3rem, 2.4vw, 1.5rem)',
+              fontWeight: 300,
+              letterSpacing: '0',
             }}
           >
-            В этот день мы хотим разделить нашу{' '}
-            <em className="italic text-[#a08368]">радость</em> с теми, кто
-            важен для нас
-          </blockquote>
+            Мы решили пожениться. Теперь официально зовём вас радоваться,
+            танцевать и плакать на трогательных моментах вместе с нами.
+          </p>
 
         </motion.div>
       </div>

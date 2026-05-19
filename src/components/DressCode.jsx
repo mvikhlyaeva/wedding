@@ -5,14 +5,14 @@ import DressCodeModal from './DressCodeModal'
 const palette = [
   { name: 'Rosewater', hex: '#ffdfdd', tall: true },
   { name: 'Pear Sorbet', hex: '#fff4b7', tall: false },
-  { name: 'Crème Brûlée', hex: '#e5d4be', tall: false },
-  { name: 'Gleam', hex: '#c8d5b6', tall: true },
+  { name: 'Crème Brûlée', hex: '#dccbb8', tall: false },
+  { name: 'Gleam', hex: '#c0d2ae', tall: true },
 ]
 
 export default function DressCode() {
   const [open, setOpen] = useState(false)
   return (
-    <section className="relative bg-[#f7f5f3] py-24 md:py-36 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section className="relative bg-[#f9f4e8] py-24 md:py-36 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-12 gap-x-6 md:gap-x-10 gap-y-14">
 
         {/* Left column — header + intro */}
@@ -32,7 +32,7 @@ export default function DressCode() {
             }}
           >
             Палитра<br />
-            <span className="italic text-[#a08368]">вечера</span>
+            <span className="text-[#9c8e78]">вечера</span>
           </h2>
 
           <motion.p
@@ -47,7 +47,7 @@ export default function DressCode() {
 
           <motion.button
             onClick={() => setOpen(true)}
-            className="group inline-flex items-center gap-3 font-sans text-[11px] md:text-[12px] tracking-[0.3em] uppercase text-[#a08368] hover:text-[#243329] transition-colors duration-300 mt-10 md:mt-14"
+            className="group inline-flex items-center gap-3 font-sans text-[11px] md:text-[12px] tracking-[0.3em] uppercase text-[#9c8e78] hover:text-[#243329] transition-colors duration-300 mt-10 md:mt-14"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
@@ -105,7 +105,7 @@ export default function DressCode() {
                   <span className="font-sans text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-[#243329]">
                     {color.name}
                   </span>
-                  <span className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#a08368]/70">
+                  <span className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#9c8e78]/70">
                     №{String(i + 1).padStart(2, '0')}
                   </span>
                 </div>

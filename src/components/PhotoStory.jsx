@@ -31,7 +31,7 @@ export default function PhotoStory() {
         >
           <span className="block w-12 h-px bg-white/40 mb-6 md:mb-8" />
           <p className="font-serif text-[2.2rem] md:text-[3.5rem] lg:text-[4.5rem] leading-[1.1] text-white font-light">
-            Навстречу<br /><span className="italic">друг другу</span>
+            Навстречу<br />друг другу
           </p>
           <span className="font-sans text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/60 mt-6 md:mt-8 block">
             Григорий &amp; Мария
