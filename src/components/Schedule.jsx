@@ -33,7 +33,7 @@ const Flourish = () => (
 
 export default function Schedule() {
   return (
-    <section className="bg-[#f9f4e8] py-16 md:py-24 px-6 overflow-hidden">
+    <section className="bg-[#f9f4e8] pt-8 md:pt-12 pb-16 md:pb-24 px-6 overflow-hidden">
       <div className="w-fit max-w-full mx-auto">
 
         {/* Header */}

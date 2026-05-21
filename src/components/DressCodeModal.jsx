@@ -2,9 +2,12 @@ import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const lookbook = [
-  { src: '/dress-code/IMG_1964.jpg', alt: 'Палитра образов 1' },
+  { src: '/dress-code/IMG_3928.jpg', alt: 'Палитра образов 1' },
   { src: '/dress-code/IMG_1966.jpg', alt: 'Палитра образов 2' },
-  { src: '/dress-code/IMG_1970.jpg', alt: 'Палитра образов 3' },
+  { src: '/dress-code/IMG_3925.jpg', alt: 'Палитра образов 3' },
+  { src: '/dress-code/IMG_3929.jpg', alt: 'Палитра образов 4' },
+  { src: '/dress-code/IMG_3930.jpg', alt: 'Палитра образов 5' },
+  { src: '/dress-code/IMG_1964.jpg', alt: 'Палитра образов 6' },
 ]
 
 export default function DressCodeModal({ open, onClose }) {

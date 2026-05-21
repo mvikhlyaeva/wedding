@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 import DressCodeModal from './DressCodeModal'
 
 const palette = [
-  { name: 'Rosewater', hex: '#ffdfdd', tall: true },
-  { name: 'Pear Sorbet', hex: '#fff4b7', tall: false },
+  { name: 'Pear Sorbet', hex: '#fff4b7', tall: true },
+  { name: 'Gleam', hex: '#c0d2ae', tall: false },
   { name: 'Crème Brûlée', hex: '#dccbb8', tall: false },
-  { name: 'Gleam', hex: '#c0d2ae', tall: true },
+  { name: 'Rosewater', hex: '#ffdfdd', tall: true },
 ]
 
 export default function DressCode() {
@@ -45,30 +45,6 @@ export default function DressCode() {
             Будем благодарны, если вы поддержите нежную природную палитру вечера — пастельные тона, льняные фактуры, мягкий свет.
           </motion.p>
 
-          <motion.button
-            onClick={() => setOpen(true)}
-            className="group inline-flex items-center gap-3 font-sans text-[11px] md:text-[12px] tracking-[0.3em] uppercase text-[#9c8e78] hover:text-[#243329] transition-colors duration-300 mt-10 md:mt-14"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.9, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <span>посмотреть образы</span>
-            <span className="block w-8 h-px bg-current transition-all duration-300 group-hover:w-14" />
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            >
-              <path d="M5 12h14M13 5l7 7-7 7" />
-            </svg>
-          </motion.button>
         </motion.div>
 
         {/* Right column — fabric swatches, asymmetric */}
@@ -84,7 +60,7 @@ export default function DressCode() {
               <motion.div
                 key={color.name}
                 className={`flex flex-col gap-3 ${
-                  i === 1 ? 'mt-12 md:mt-20' : ''
+                  i === 1 ? 'self-end' : ''
                 } ${i === 2 ? 'md:-mt-8' : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -112,6 +88,36 @@ export default function DressCode() {
               </motion.div>
             ))}
           </div>
+        </motion.div>
+
+        {/* Button — below swatches, full width */}
+        <motion.div
+          className="col-span-12 flex justify-start"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <button
+            onClick={() => setOpen(true)}
+            className="group inline-flex items-center gap-3 font-sans text-[11px] md:text-[12px] tracking-[0.3em] uppercase text-[#9c8e78] hover:text-[#243329] transition-colors duration-300"
+          >
+            <span>посмотреть образы</span>
+            <span className="block w-8 h-px bg-current transition-all duration-300 group-hover:w-14" />
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            >
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </button>
         </motion.div>
       </div>
 

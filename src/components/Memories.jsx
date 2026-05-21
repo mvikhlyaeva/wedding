@@ -1,69 +1,56 @@
 import { motion } from 'framer-motion'
+import { useRef } from 'react'
 
 const photos = [
-  {
-    src: '/IMG_8074.webp',
-    grid: 'col-span-7 md:col-span-4 md:col-start-1',
-    delay: 0,
-  },
-  {
-    src: '/IMG_6554.webp',
-    grid: 'col-span-10 col-start-3 md:col-span-5 md:col-start-7 md:mt-24 lg:mt-32',
-    delay: 0.15,
-  },
-  {
-    src: '/IMG_6364.webp',
-    grid: 'col-span-8 col-start-2 md:col-span-4 md:col-start-3 md:mt-12 lg:mt-16',
-    delay: 0.3,
-  },
+  { src: '/IMG_6554.webp', delay: 0 },
+  { src: '/IMG_8074.webp', delay: 0.1 },
+  { src: '/IMG_6364.webp', delay: 0.2 },
 ]
 
 export default function Memories() {
+  const trackRef = useRef(null)
+
   return (
-    <section className="bg-[#f9f4e8] py-20 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-12 gap-x-4 md:gap-x-6 gap-y-10 md:gap-y-14">
-          {photos.map((photo) => (
-            <motion.div
-              key={photo.src}
-              className={photo.grid}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{
-                duration: 1.1,
-                delay: photo.delay,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              <div className="relative w-full aspect-[3/4] overflow-hidden">
-                <img
-                  src={photo.src}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
-              {photo.caption && (
-                <div className="flex items-center justify-center gap-3 md:gap-4 mt-5 md:mt-6 text-[#9c8e78]">
-                  <span className="block w-6 md:w-8 h-px bg-current/60" />
-                  <p
-                    className="font-serif italic font-light leading-none whitespace-nowrap"
-                    style={{
-                      fontSize: 'clamp(1rem, 2.4vw, 1.35rem)',
-                      fontVariationSettings: '"opsz" 144, "SOFT" 100',
-                    }}
-                  >
-                    {photo.caption}
-                  </p>
-                  <span className="block w-6 md:w-8 h-px bg-current/60" />
-                </div>
-              )}
-            </motion.div>
-          ))}
-        </div>
-      </div>
+    <section className="bg-[#f9f4e8] py-6 md:py-10 overflow-hidden">
+      <motion.div
+        className="flex gap-4 px-6 md:px-12 lg:px-20 overflow-x-auto scroll-smooth"
+        ref={trackRef}
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      >
+        {photos.map((photo, i) => (
+          <motion.div
+            key={photo.src}
+            className="flex-shrink-0 w-[72vw] sm:w-[52vw] md:w-[36vw] lg:w-[28vw]"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{
+              duration: 1,
+              delay: photo.delay,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <div className="relative w-full aspect-[3/4] overflow-hidden rounded-sm">
+              <img
+                src={photo.src}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </motion.div>
+        ))}
+
+        {/* right padding spacer */}
+        <div className="flex-shrink-0 w-6 md:w-12 lg:w-20" />
+      </motion.div>
+
+      <style>{`.memories-scroll::-webkit-scrollbar { display: none; }`}</style>
     </section>
   )
 }

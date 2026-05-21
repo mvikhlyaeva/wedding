@@ -22,7 +22,7 @@ const Star = ({ size = 9 }) => (
 
 export default function DateSection() {
   return (
-    <section className="bg-[#f9f4e8] pt-4 md:pt-6 pb-20 md:pb-28 px-6 overflow-hidden">
+    <section className="bg-[#f9f4e8] pt-4 md:pt-6 pb-8 md:pb-12 px-6 overflow-hidden">
       <div className="w-fit max-w-full mx-auto">
 
         {/* Header */}
