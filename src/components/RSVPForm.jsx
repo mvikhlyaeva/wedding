@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getGuest } from '../guests'
+import { supabase } from '../supabase'
 
 const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdouKEx0FjOQpStE692i9YgI8E4edHqfNJsZ-CwOlDsjgDQKQ/formResponse'
 const FIELD_IDS = {
@@ -29,16 +30,34 @@ export default function RSVPForm() {
     drinks: [],
     comment: '',
   })
-  const STORAGE_KEY = `rsvp-submitted${guest?.slug ? `-${guest.slug}` : ''}`
+  const STORAGE_KEY = `rsvp-submitted${guest?.code ? `-${guest.code}` : ''}`
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  // Восстанавливаем состояние «уже отправил» из localStorage
+  // Проверяем состояние «уже отправил»: сначала Supabase (кросс-устройство), потом localStorage
   useEffect(() => {
-    if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === '1') {
-      setSubmitted(true)
+    async function checkSubmitted() {
+      // Быстрая проверка локально
+      if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === '1') {
+        setSubmitted(true)
+        return
+      }
+      // Проверка в Supabase (если есть код гостя)
+      if (guest?.code) {
+        const { data } = await supabase
+          .from('rsvp_submissions')
+          .select('guest_code')
+          .eq('guest_code', guest.code)
+          .maybeSingle()
+        if (data) {
+          setSubmitted(true)
+          // Кэшируем локально для будущих быстрых проверок
+          try { localStorage.setItem(STORAGE_KEY, '1') } catch { /* приватный режим */ }
+        }
+      }
     }
-  }, [STORAGE_KEY])
+    checkSubmitted()
+  }, [guest?.code, STORAGE_KEY])
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -77,6 +96,19 @@ export default function RSVPForm() {
 
     setLoading(false)
     setSubmitted(true)
+
+    // Сохраняем в Supabase (кросс-устройство)
+    if (guest?.code) {
+      try {
+        await supabase
+          .from('rsvp_submissions')
+          .upsert({ guest_code: guest.code }, { onConflict: 'guest_code' })
+      } catch {
+        // не блокируем UI при сетевой ошибке
+      }
+    }
+
+    // Локальный кэш
     try {
       localStorage.setItem(STORAGE_KEY, '1')
     } catch {

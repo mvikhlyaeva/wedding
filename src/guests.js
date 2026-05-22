@@ -44,5 +44,7 @@ export function getGuest() {
     .toLowerCase()
     .trim();
   if (!id) return null;
-  return guests[id] || null;
+  const guest = guests[id];
+  if (!guest) return null;
+  return { ...guest, code: id };
 }
