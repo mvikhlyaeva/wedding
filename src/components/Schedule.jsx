@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 
 const events = [
-  { time: '16:00', label: 'Начало торжества', icon: 'rings' },
-  { time: '16:30', label: 'Церемония', icon: 'bouquet' },
-  { time: '18:00', label: 'Ужин', icon: 'coupes' },
-  { time: '20:00', label: 'Танцы', icon: 'note' },
+  { time: '15:00', label: 'Сбор гостей', icon: 'bouquet' },
+  { time: '16:00', label: 'Свадебная церемония', icon: 'rings' },
+  { time: '17:00', label: 'Начало банкета', icon: 'coupes' },
   { time: '21:30', label: 'Вынос торта', icon: 'cake' },
+  { time: '22:00', label: 'Танцы', icon: 'note' },
   { time: '23:00', label: 'Окончание', icon: 'moon' },
 ]
 
