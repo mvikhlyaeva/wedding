@@ -45,7 +45,7 @@ export default function RSVPForm() {
       // Проверка в Supabase (если есть код гостя)
       if (guest?.code) {
         const { data } = await supabase
-          .from('rsvp_submissions')
+          .from('submissions')
           .select('guest_code')
           .eq('guest_code', guest.code)
           .maybeSingle()
@@ -101,7 +101,7 @@ export default function RSVPForm() {
     if (guest?.code) {
       try {
         await supabase
-          .from('rsvp_submissions')
+          .from('submissions')
           .upsert({ guest_code: guest.code }, { onConflict: 'guest_code' })
       } catch {
         // не блокируем UI при сетевой ошибке
