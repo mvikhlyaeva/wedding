@@ -44,12 +44,14 @@ export default function RSVPForm() {
       }
       // Проверка в Supabase (если есть код гостя)
       if (guest?.code) {
-        const { data } = await supabase
+        const { data, error } = await supabase
           .from('submissions')
           .select('guest_code')
           .eq('guest_code', guest.code)
           .maybeSingle()
-        if (data) {
+        if (error) {
+          console.error('[RSVP] Supabase check error:', error)
+        } else if (data) {
           setSubmitted(true)
           // Кэшируем локально для будущих быстрых проверок
           try { localStorage.setItem(STORAGE_KEY, '1') } catch { /* приватный режим */ }
@@ -97,22 +99,24 @@ export default function RSVPForm() {
     setLoading(false)
     setSubmitted(true)
 
-    // Сохраняем в Supabase (кросс-устройство)
-    if (guest?.code) {
-      try {
-        await supabase
-          .from('submissions')
-          .upsert({ guest_code: guest.code }, { onConflict: 'guest_code' })
-      } catch {
-        // не блокируем UI при сетевой ошибке
-      }
-    }
-
     // Локальный кэш
     try {
       localStorage.setItem(STORAGE_KEY, '1')
     } catch {
       // приватный режим — игнорируем
+    }
+
+    // Сохраняем в Supabase (кросс-устройство)
+    // Supabase-js возвращает { error } вместо throw — проверяем явно
+    if (guest?.code) {
+      const { error } = await supabase
+        .from('submissions')
+        .insert({ guest_code: guest.code })
+        .select()
+      if (error && error.code !== '23505') {
+        // 23505 = unique_violation (уже отправлял) — не страшно
+        console.error('[RSVP] Supabase insert error:', error)
+      }
     }
   }
 
