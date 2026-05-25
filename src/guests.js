@@ -35,6 +35,7 @@ export const guests = {
     greeting: "Дорогие Антон и Анастасия",
     name: "Антон и Анастасия Поповы",
   },
+  a8n2: { greeting: "Дорогие Денис и Анжелика", name: "Денис и Анжелика" },
 };
 
 export function getGuest() {
